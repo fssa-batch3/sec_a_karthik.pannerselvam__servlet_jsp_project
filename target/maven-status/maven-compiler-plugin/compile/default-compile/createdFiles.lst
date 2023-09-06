@@ -1,0 +1,3 @@
+com\fssa\taskManagementApp\servlet\LoginServlet.class
+com\fssa\taskManagementApp\servlet\RegisterServelet.class
+com\fssa\taskManagementApp\servlet\LogOutServelet.class
