@@ -7,18 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<jsp:include page="header.jsp"></jsp:include>
+
 <h1>Welcome to Task Management App</h1>
 
 <%
-	String loggedInEmail = (String) session.getAttribute("loggedInEmail");
-	
-	if(loggedInEmail == null) {
+	String loggedInEmailString = (String) session.getAttribute("LoginUserEmail");
+	System.out.print(loggedInEmailString);
+	if(loggedInEmailString == null) {
 		response.sendRedirect("login.jsp");
 	}
 	
 %>
 
-<p>Logged In user: <%=loggedInEmail%> </p>
-<a href="LogoutServlet">logout</a>
+<p>Logged In user: <%=loggedInEmailString%> </p>
+<p><a href="addTask.jsp">Add task</a></p>
+<p><a href="TaskListServelet">All Task List</a></p>
 </body>
 </html>

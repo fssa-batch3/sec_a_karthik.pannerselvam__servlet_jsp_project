@@ -27,7 +27,7 @@ public class GetAllTaskJSONServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			List<Task> tasks = new TaskService().getAllTasks();
+			List<Task> tasks = new TaskService().getAllTasks("");
 			
 			JSONArray accountsJSonArray = new JSONArray(tasks);
 			PrintWriter out = response.getWriter();

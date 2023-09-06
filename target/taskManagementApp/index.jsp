@@ -1,21 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="ISO-8859-1">
+<title>BookWebApp</title>
+</head>
 <body>
-<h2>Hello World!</h2>
+	<jsp:include page="header.jsp"></jsp:include>
 
-<!-- This is how you write comments in JSP -->
-	
-	<!--  Example of JSP Declaration -->
-	<%!public String getMessage() {
-		return "Success";
-	}%>
-	
-	<!--  Example of Scriptlet -->
-	<%
-	String message = "Success";
-	%>
-	
-	<!-- Expressions -->
-	<%=message%>
-	<%=getMessage()%>
+	<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+		<div class="container-fluid py-5">
+			<h1 class="display-5 fw-bold">Task Management Web App</h1>			
+		</div>
+	</div>
+
 </body>
 </html>
