@@ -12,7 +12,8 @@
 <h1>Welcome to Task Management App</h1>
 
 <%
-	String loggedInEmailString = (String) request.getAttribute("LoginUserEmail");
+	String loggedInEmailString = (String) session.getAttribute("LoginUserEmail");
+	System.out.print(loggedInEmailString);
 	if(loggedInEmailString == null) {
 		response.sendRedirect("login.jsp");
 	}
@@ -22,6 +23,5 @@
 <p>Logged In user: <%=loggedInEmailString%> </p>
 <p><a href="addTask.jsp">Add task</a></p>
 <p><a href="TaskListServelet">All Task List</a></p>
-<a href="LogoutServlet">logout</a>
 </body>
 </html>

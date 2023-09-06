@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Register Book b </title>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -78,13 +78,13 @@ a {
 	
 	
     <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" autofocus required>
+    <input type="text" placeholder="Enter Email" name="email" id="email"  autofocus required>
 	
 	<label for="username"><b>Name</b></label>
-    <input type="text" placeholder="name" name="username" id="email" required>
+    <input type="text" placeholder="name" name="username" id="email"  required>
     
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="psw" required>
+    <input type="password" placeholder="Enter Password" name="password" id="psw"  required>
 
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="valid_password" id="psw-repeat" required>

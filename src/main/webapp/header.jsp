@@ -32,7 +32,7 @@
 						aria-current="page" href="home.jsp">Home</a></li>
 
 					<%
-					String loggedInEmail = (String) request.getAttribute("LoginUserEmail");
+					String loggedInEmail = (String) session.getAttribute("LoginUserEmail");
 					if (loggedInEmail == null) {
 					%>
 					<li class="nav-item"><a class="nav-link" href="login.jsp">Login</a>

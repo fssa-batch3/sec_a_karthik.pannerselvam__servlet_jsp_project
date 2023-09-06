@@ -1,7 +1,6 @@
 package com.fssa.taskManagementApp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import model.User;
 import services.UserService;
@@ -26,22 +26,32 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		User user = new User(email,password);
+		HttpSession session = request.getSession();
 
 		try {
 			
 			String logginEmail = userService.loginUser(user);
-			response.getWriter().println(logginEmail);
-//			HttpSession session = request.getSession();
-			request.setAttribute("LoginUserEmail", logginEmail);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
-			requestDispatcher.forward(request, response);
+			
+			if (logginEmail != null) {
+				response.getWriter().println(logginEmail);
+				System.out.println(logginEmail);
+				session.setAttribute("LoginUserEmail", logginEmail);
+				response.sendRedirect(request.getContextPath( ) + "/home.jsp");
+	        } else {
+	            // Handle the case where login was unsuccessful
+	            response.sendRedirect("login.jsp");
+	        }
+			
+			
+//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
+//			requestDispatcher.forward(request, response);
 			
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-			requestDispatcher.forward(request, response);
-			
+//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
+//			requestDispatcher.forward(request, response);
+			response.sendRedirect("login.jsp");
 			
 		}
 				
