@@ -11,7 +11,15 @@
 </head>
 <body>
 <jsp:include page="header.jsp"></jsp:include>
-	<table class=" table table-bordered">
+	
+   <% 
+   List<Task> taskList = (List<Task>)request.getAttribute("taskList");
+   if (taskList.isEmpty()) {
+		out.println("<h2>" + "No task found" + "</h2>");
+	}
+   else{
+   %>
+   <table class=" table table-bordered">
     <tr>
     	<th>S.No</th>
         <th>Task Name</th>
@@ -29,7 +37,9 @@
   	
         </tr>
     </c:forEach>
-</table>
+    </table>
+    
+  <%}%>
 
 </body>
 </html>

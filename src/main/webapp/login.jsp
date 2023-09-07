@@ -73,8 +73,8 @@ button[type="submit"]:hover {
 		<h2>Login Form</h2>
 		<form action="login" method="POST">
 			<label>Email:</label> <input type="email" name="email"
-				placeholder="Enter email"><br> <label>Password:</label>
-			<input type="password" name="password" placeholder="Enter password"><br>
+				placeholder="Enter email" required autofocus><br> <label>Password:</label>
+			<input type="password" name="password" placeholder="Enter password" required><br>
 			<button type="submit">Submit</button>
 		</form>
 	</div>

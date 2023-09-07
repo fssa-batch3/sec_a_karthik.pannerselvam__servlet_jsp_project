@@ -45,13 +45,13 @@ div {
 <div>
   <form action="AddTask" method="post">
     <label for="fname">Task Name</label>
-    <input type="text" id="fname" name="taskName" value="Bike Service" placeholder=" Enter your task name.." autofocus>
+    <input type="text" id="fname" name="taskName" placeholder=" Enter your task name.." autofocus required>
 
     <label for="lname">Task Description</label>
-    <input type="text" id="lname" name="taskDesc" value="Give the bike to the service center at 9.00 am! Note: call the service center" placeholder="Enter your task decscription">
+    <input type="text" id="lname" name="taskDesc"  placeholder="Enter your task decscription" required>
 
     <label for="TaskStatus">Task Status</label>
-    <select id="TaskStatuses" name="taskStatuses">
+    <select id="TaskStatuses" name="taskStatuses" required>
       <option value="COMPLETED">COMPLETED</option>
       <option value="PENDING">PENDING</option>
     </select>

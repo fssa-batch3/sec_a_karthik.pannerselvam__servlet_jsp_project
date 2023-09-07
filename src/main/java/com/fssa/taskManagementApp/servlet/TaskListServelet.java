@@ -24,18 +24,19 @@ public class TaskListServelet extends HttpServlet {
 
 	protected void doGet (HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<Task> tasks = null;
 		try {
 			
 			HttpSession session = request.getSession();
 			String user_email = (String) session.getAttribute("LoginUserEmail");
 
-			List<Task> tasks = new TaskService().getAllTasks(user_email);
-				System.out.println(tasks.get(0).toString());
+		tasks = new TaskService().getAllTasks(user_email);
 			request.setAttribute("taskList", tasks);
 			RequestDispatcher getRequest = request.getRequestDispatcher("listAllTask.jsp");
 			getRequest.forward(request, response);
 		} catch (ServiceException e) {
 			e.printStackTrace();
+			tasks = null;
 		}
 	}
     
