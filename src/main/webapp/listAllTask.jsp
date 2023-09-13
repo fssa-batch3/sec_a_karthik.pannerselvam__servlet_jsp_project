@@ -14,7 +14,7 @@
 	
    <% 
    List<Task> taskList = (List<Task>)request.getAttribute("taskList");
-   if (taskList.isEmpty()) {
+   if (taskList==null) {
 		out.println("<h2>" + "No task found" + "</h2>");
 	}
    else{
@@ -33,7 +33,7 @@
             <td><c:out value="${task.taskName}" /></td>
             <td><c:out value="${task.taskDesc}" /></td>
             <td><c:out value="${task.taskStatus}" /></td>
-            <td><a href="">Edit Task</a><br><a href="">Delete Task</a></td>
+            <td><a href="ViewTaskServlet?taskId=${task.id}">Edit Task</a><br></td>
   	
         </tr>
     </c:forEach>

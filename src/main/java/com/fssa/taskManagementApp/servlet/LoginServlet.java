@@ -37,21 +37,12 @@ public class LoginServlet extends HttpServlet {
 				System.out.println(logginEmail);
 				session.setAttribute("LoginUserEmail", logginEmail);
 				response.sendRedirect(request.getContextPath( ) + "/home.jsp");
-	        } else {
-	            // Handle the case where login was unsuccessful
-	            response.sendRedirect("login.jsp");
-	        }
-			
-			
-//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("home.jsp");
-//			requestDispatcher.forward(request, response);
+	        } 
 			
 		} catch (ServiceException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-//			RequestDispatcher requestDispatcher = request.getRequestDispatcher("login.jsp");
-//			requestDispatcher.forward(request, response);
-			response.sendRedirect("login.jsp");
+			response.sendRedirect("login.jsp?error="+e.getMessage());
 			
 		}
 				

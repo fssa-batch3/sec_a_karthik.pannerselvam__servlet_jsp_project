@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Register Book b </title>
+<title>Register</title>
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -75,7 +75,15 @@ a {
   <div class="container">
     <h1>Register</h1>     
     <p>Please fill in this form to create an account.</p>
-	
+	<%
+	String errorMessage = request.getParameter("error");
+	System.out.println(errorMessage); 
+	if(errorMessage != null){
+		%>
+		<p style="color:red;"><%=errorMessage %></p>
+		<%
+	}
+	%>
 	
     <label for="email"><b>Email</b></label>
     <input type="text" placeholder="Enter Email" name="email" id="email"  autofocus required>

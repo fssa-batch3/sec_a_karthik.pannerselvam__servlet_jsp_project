@@ -37,23 +37,8 @@ public class RegisterServelet extends HttpServlet {
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
-		String valid_password = request.getParameter("valid_password");
 
-		PrintWriter out = response.getWriter();
-		if (email == null || "".equals(email)) {
-			out.println("Invalid Email");
-		}
-
-		else if (password == null || "".equals(password) || password.length() < 6) {
-			out.println("Invalid password");
-		} else if (username == null) {
-			out.println("Username is not valid");
-		} else if (!password.equals(valid_password)) {
-			out.println("Password is not matched to the confirm password!");
-		} else {
-			out.println("Email, password and username is valid");
-			response.sendRedirect("login.jsp");
-		}
+//		PrintWriter out = response.getWriter();
 
 		User user = new User();
 		user.setName(username);
@@ -62,10 +47,11 @@ public class RegisterServelet extends HttpServlet {
 
 		UserService addUser = new UserService();
 		try {
-			addUser.registerUser(user);
+			if (addUser.registerUser(user)) {
+				response.sendRedirect("login.jsp");
+			}
 		} catch (ServiceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.sendRedirect("register.jsp?error=" + e.getMessage());
 		}
 
 	}

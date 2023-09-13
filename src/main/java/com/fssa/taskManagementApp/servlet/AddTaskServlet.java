@@ -27,13 +27,15 @@ public class AddTaskServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		PrintWriter out = response.getWriter();
 		Task task = new Task();
 		String taskname = request.getParameter("taskName");
 		String taskDesc = request.getParameter("taskDesc");
 		String taskStatus = request.getParameter("taskStatuses");
+		
 		//Getting session to get the user email
+		
 		HttpSession session = request.getSession();
 		String user_email = (String) session.getAttribute("LoginUserEmail");
 		TaskService service = new TaskService();
@@ -41,13 +43,11 @@ public class AddTaskServlet extends HttpServlet {
 		task.setTaskDesc(taskDesc);
 		task.setTaskStatus(taskStatus);
 		task.setUserEmail(user_email);
-		System.out.println(user_email);
 		try {
 			service.newTask(task);
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("listAllTask.jsp");
 			requestDispatcher.forward(request, response);
 		} catch (ServiceException e) {
-			e.printStackTrace();
 			out.println(e.getMessage());
 		}
 	}

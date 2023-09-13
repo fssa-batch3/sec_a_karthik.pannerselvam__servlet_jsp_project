@@ -18,7 +18,7 @@ import services.exception.ServiceException;
 /**
  * Servlet implementation class TaskListServelet
  */
-@WebServlet("/TaskListServelet")
+@WebServlet("/TaskListServlet")
 public class TaskListServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

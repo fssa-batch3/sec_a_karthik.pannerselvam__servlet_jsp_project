@@ -63,15 +63,20 @@ button[type="submit"]:hover {
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
 
-	<%
-	String errorMessage = request.getParameter("error");
-	if (errorMessage != null) {
-		out.println("<p>" + errorMessage + "</p>");
-	}
-	%>
+	
 	<div class="whole-container">
 		<h2>Login Form</h2>
 		<form action="login" method="POST">
+			
+			<%
+	String errorMessage = request.getParameter("error");
+	if (errorMessage != null) {
+		%>
+		<p style="color:red;"><%=errorMessage %></p>
+	<%
+		
+	}
+	%>
 			<label>Email:</label> <input type="email" name="email"
 				placeholder="Enter email" required autofocus><br> <label>Password:</label>
 			<input type="password" name="password" placeholder="Enter password" required><br>
