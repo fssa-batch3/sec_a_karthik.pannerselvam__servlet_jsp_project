@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*"%>
 <%@ page import="model.Task"%>
@@ -8,38 +8,90 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Task List</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	background-color: #f5f5f5;
+	margin: 0;
+	padding: 0;
+}
+
+h2 {
+	color: #333;
+	text-align: center;
+	margin-top: 20px;
+}
+
+table {
+	width: 80%;
+	margin: 20px auto;
+	background-color: #fff;
+	border-collapse: collapse;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+	padding: 12px 15px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	background-color: #333;
+	color: #fff;
+}
+
+tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+tr:hover {
+	background-color: #ddd;
+}
+
+a {
+	text-decoration: none;
+	color: #007bff;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+</style>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
-	
-   <% 
-   List<Task> taskList = (List<Task>)request.getAttribute("taskList");
-   if (taskList==null) {
+
+	<jsp:include page="header.jsp"></jsp:include>
+
+	<%
+	List<Task> taskList = (List<Task>) request.getAttribute("taskList");
+	if (taskList == null) {
 		out.println("<h2>" + "No task found" + "</h2>");
+	} else {
+	%>
+	<table class=" table table-bordered">
+		<tr>
+			<th>S.No</th>
+			<th>Task Name</th>
+			<th>Task Description</th>
+			<th>Task Status</th>
+			<th>Actions</th>
+		</tr>
+		<c:forEach var="task" items="${taskList}" varStatus="loop">
+			<tr>
+				<td><c:out value="${loop.index + 1}" /></td>
+				<td><c:out value="${task.taskName}" /></td>
+				<td><c:out value="${task.taskDesc}" /></td>
+				<td><c:out value="${task.taskStatus}" /></td>
+				<td><a href="ViewTaskServlet?taskId=${task.id}">Edit Task</a><br></td>
+
+			</tr>
+		</c:forEach>
+	</table>
+
+	<%
 	}
-   else{
-   %>
-   <table class=" table table-bordered">
-    <tr>
-    	<th>S.No</th>
-        <th>Task Name</th>
-        <th>Task Description</th>
-        <th>Task Status</th>
-        <th>Actions</th>
-    </tr>
-    <c:forEach var="task" items="${taskList}" varStatus="loop">
-        <tr>
-        	<td><c:out value="${loop.index + 1}" /></td>
-            <td><c:out value="${task.taskName}" /></td>
-            <td><c:out value="${task.taskDesc}" /></td>
-            <td><c:out value="${task.taskStatus}" /></td>
-            <td><a href="ViewTaskServlet?taskId=${task.id}">Edit Task</a><br></td>
-  	
-        </tr>
-    </c:forEach>
-    </table>
-    
-  <%}%>
+	%>
 
 </body>
 </html>
