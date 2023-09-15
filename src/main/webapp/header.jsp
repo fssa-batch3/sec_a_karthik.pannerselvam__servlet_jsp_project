@@ -43,7 +43,8 @@
 					} else {
 					%>
 					<li class="nav-item"><a class="nav-link" href="#"><%=loggedInEmail%></a>
-
+					</li>
+					<li class="nav-item"><a class="nav-link" href="TaskListServlet">Tasks</a>
 					</li>
 					<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
 

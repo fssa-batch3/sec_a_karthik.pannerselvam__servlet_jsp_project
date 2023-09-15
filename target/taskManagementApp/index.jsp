@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>BookWebApp</title>
+<link href="style.css">
+<title>TaskManagement App</title>
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
@@ -14,6 +15,5 @@
 			<h1 class="display-5 fw-bold">Task Management Web App</h1>			
 		</div>
 	</div>
-
 </body>
 </html>

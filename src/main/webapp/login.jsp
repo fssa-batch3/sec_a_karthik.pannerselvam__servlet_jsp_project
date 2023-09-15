@@ -66,7 +66,7 @@ button[type="submit"]:hover {
 	
 	<div class="whole-container">
 		<h2>Login Form</h2>
-		<form action="login" method="POST">
+		<form action="login" method="GET">
 			
 			<%
 	String errorMessage = request.getParameter("error");

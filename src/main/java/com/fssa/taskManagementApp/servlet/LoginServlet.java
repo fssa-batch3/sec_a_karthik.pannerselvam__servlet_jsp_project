@@ -21,7 +21,7 @@ import services.exception.ServiceException;
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UserService userService  = new UserService();
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -36,6 +36,7 @@ public class LoginServlet extends HttpServlet {
 				response.getWriter().println(logginEmail);
 				System.out.println(logginEmail);
 				session.setAttribute("LoginUserEmail", logginEmail);
+				System.out.println(logginEmail);
 				response.sendRedirect(request.getContextPath( ) + "/home.jsp");
 	        } 
 			
@@ -43,6 +44,7 @@ public class LoginServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			response.sendRedirect("login.jsp?error="+e.getMessage());
+			System.out.println(e.getMessage());
 			
 		}
 				

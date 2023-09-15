@@ -43,7 +43,7 @@ div {
 <h3>Add Your Task</h3>
 
 <div>
-  <form action="AddTask">
+ <form action="AddTask" method="POST">
     <label for="fname">Task Name</label>
     <input type="text" id="fname" name="taskName" placeholder=" Enter your task name.." autofocus required>
 
@@ -63,6 +63,9 @@ div {
       <option value="Medium">Medium</option>
       <option value="Low">Low</option>
     </select>
+    
+    <label for="taskassign">Assign task to:</label>
+    <input type="email" id="email" name="assigned_email" placeholder="Enter the existing assignee email">
     
     <input type="submit" value="Submit">
   </form>

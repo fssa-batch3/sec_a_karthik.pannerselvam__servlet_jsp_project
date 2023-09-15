@@ -1,6 +1,7 @@
 com\fssa\taskManagementApp\servlet\LoginServlet.class
 com\fssa\taskManagementApp\servlet\GetAllTaskJSONServlet.class
+com\fssa\taskManagementApp\servlet\EditTaskServlet.class
+com\fssa\taskManagementApp\servlet\AddTaskServlet.class
 com\fssa\taskManagementApp\servlet\TaskListServelet.class
 com\fssa\taskManagementApp\servlet\RegisterServelet.class
 com\fssa\taskManagementApp\servlet\LogOutServelet.class
-com\fssa\taskManagementApp\servlet\AddTaskServlet.class

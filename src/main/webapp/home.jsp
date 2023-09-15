@@ -8,75 +8,69 @@
 <style>
 /* styles.css */
 body {
-	font-family: Arial, sans-serif;
-	background-color: grey;
+    font-family: Arial, sans-serif;
+    background-color: grey;
+}
 
+.container {
+    display: flex;
+    align-items: center; /* Vertically center align the content */
 }
-.container{
-	display:flex;
-	justify-content: space-between;
+
+.img-container {
+    width: 50%; /* Adjust the width as needed */
+    padding: 10px; /* Add some spacing around the image */
 }
-.float-child{
-	margin-left: 5px;
+
+.text-container {
+    flex: 1; /* Allow the text container to take up the remaining space */
+    padding: 10px; /* Add some spacing around the text */
 }
-.img-container{
-	width:auto;
-}
-h1 {
-	color: #333;
+
+.page-title {
+  /*  font-size: 72px;
+    -webkit-text-fill-color: transparent;
+    background: linear-gradient(rgb(25, 76, 51), rgb(187, 187, 187)) text;
+ /* Increase the font size for the heading */
+   font-size: 72px;
+  background: -webkit-linear-gradient(rgb(25, 76, 51), rgb(187, 187, 187));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 p {
-	font-size: 16px;
+    font-size: 16px;
+    margin: 0; /* Remove default margins */
 }
 
 a {
-	color: #007bff;
-	text-decoration: none;
+    color: #007bff;
+    text-decoration: none;
 }
 
 a:hover {
-	text-decoration: underline;
+    text-decoration: underline;
 }
 
 img {
-		width: 50%;
+    max-width: 100%; /* Ensure the image doesn't overflow its container */
 }
 </style>
 </head>
 <body>
-	<jsp:include page="header.jsp"></jsp:include>
+    <jsp:include page="header.jsp"></jsp:include>
 
-	<div class="container">
-		
-			<div class="img-container">
-			<img src="<%=request.getContextPath()%>/Images/Iconhp.png"
-				alt="illustration" border="0">
-		</div>
-	
-		<div class="float-child">
-			<h1>Welcome to Task Management App</h1>
+    <div class="container">
+        <div class="img-container">
+            <img src="<%=request.getContextPath()%>/Images/Iconhp.png" alt="illustration" border="0">
+        </div>
 
-			<%
-			String loggedInEmailString = (String) session.getAttribute("LoginUserEmail");
-			System.out.print(loggedInEmailString);
-			if (loggedInEmailString == null) {
-				response.sendRedirect("login.jsp");
-			}
-			%>
+        <div class="text-container">
+            <h1 class="page-title">Effortlessly Simplify Your Daily Tasks</h1>
+            <p>Create Your own tasks now! <a href="addTask.jsp" class="btn">Click me</a>
+        </div>
+    </div>
 
-			<p>
-				Logged In user:
-				<%=loggedInEmailString%>
-			</p>
-			<p>
-				<a href="addTask.jsp">Add task</a>
-			</p>
-			<p>
-				<a href="TaskListServlet">All Task List</a>
-			</p>
-
-	</div>
-	</div>
+  
 </body>
 </html>
