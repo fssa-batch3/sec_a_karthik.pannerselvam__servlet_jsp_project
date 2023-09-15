@@ -75,6 +75,7 @@ a:hover {
 			<th>Task Name</th>
 			<th>Task Description</th>
 			<th>Task Status</th>
+			<th>Priority</th>
 			<th>Actions</th>
 		</tr>
 		<c:forEach var="task" items="${taskList}" varStatus="loop">
@@ -83,7 +84,8 @@ a:hover {
 				<td><c:out value="${task.taskName}" /></td>
 				<td><c:out value="${task.taskDesc}" /></td>
 				<td><c:out value="${task.taskStatus}" /></td>
-				<td><a href="ViewTaskServlet?taskId=${task.id}">Edit Task</a><br></td>
+				<td><c:out value="${task.taskPriority}" /></td>
+				<td><a href="EditTaskServlet?taskId=${task.id}" class="btn btn-primary" type="button">Edit Task</a><br></td>
 
 			</tr>
 		</c:forEach>

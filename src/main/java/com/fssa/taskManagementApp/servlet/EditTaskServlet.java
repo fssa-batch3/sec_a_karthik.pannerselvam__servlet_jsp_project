@@ -21,7 +21,7 @@ import services.exception.ServiceException;
  * Servlet implementation class ViewTaskServlet
  */
 @WebServlet("/ViewTaskServlet")
-public class ViewTaskServlet extends HttpServlet {
+public class EditTaskServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -48,6 +48,7 @@ public class ViewTaskServlet extends HttpServlet {
 		String taskname = req.getParameter("edited-taskName");
 		String taskDec = req.getParameter("edited-desc");
 		String taskStatus = req.getParameter("edited-status");
+		String taskPriority = req.getParameter("edited-priority");
 		int taskId = Integer.parseInt(req.getParameter("taskId"));
 		String taskEmail =(String) session.getAttribute("LoginUserEmail");
 		
@@ -59,6 +60,7 @@ public class ViewTaskServlet extends HttpServlet {
 		task.setTaskName(taskname);
 		task.setTaskDesc(taskDec);
 		task.setTaskStatus(taskStatus);
+		task.setTaskPriority(taskPriority);
 		task.setUserEmail(taskEmail);
 		System.out.println(task);
 		try {

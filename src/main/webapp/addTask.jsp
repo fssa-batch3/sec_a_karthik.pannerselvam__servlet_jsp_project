@@ -43,7 +43,7 @@ div {
 <h3>Add Your Task</h3>
 
 <div>
-  <form action="AddTask" method="post">
+  <form action="AddTask">
     <label for="fname">Task Name</label>
     <input type="text" id="fname" name="taskName" placeholder=" Enter your task name.." autofocus required>
 
@@ -56,13 +56,14 @@ div {
       <option value="PENDING">PENDING</option>
     </select>
     
-  <!--    <label for="TaskPriority">Task Status</label>
-    <select id="TaskPriority" name="TaskPriority">
+    
+  <label for="TaskPriority">Task Status</label>
+    <select id="TaskPriority" name="Taskpriority">
       <option value="High">High</option>
       <option value="Medium">Medium</option>
       <option value="Low">Low</option>
     </select>
-  -->
+    
     <input type="submit" value="Submit">
   </form>
 </div>

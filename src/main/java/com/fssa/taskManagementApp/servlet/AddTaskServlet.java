@@ -25,7 +25,8 @@ import services.exception.ServiceException;
 public class AddTaskServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
 		PrintWriter out = response.getWriter();
@@ -33,6 +34,7 @@ public class AddTaskServlet extends HttpServlet {
 		String taskname = request.getParameter("taskName");
 		String taskDesc = request.getParameter("taskDesc");
 		String taskStatus = request.getParameter("taskStatuses");
+		String taskPriority = request.getParameter("Taskpriority");
 		
 		//Getting session to get the user email
 		
@@ -42,10 +44,11 @@ public class AddTaskServlet extends HttpServlet {
 		task.setTaskName(taskname);
 		task.setTaskDesc(taskDesc);
 		task.setTaskStatus(taskStatus);
+		task.setTaskPriority(taskPriority);
 		task.setUserEmail(user_email);
 		try {
 			service.newTask(task);
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("listAllTask.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("TaskListServlet");
 			requestDispatcher.forward(request, response);
 		} catch (ServiceException e) {
 			out.println(e.getMessage());

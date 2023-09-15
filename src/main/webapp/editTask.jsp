@@ -23,6 +23,8 @@
           
           <label for="status"><b>Task Status</b></label>
           <input type="text"  name="edited-status" value="${task.taskStatus}"  required>
+           <label for="status"><b>Task Status</b></label>
+          <input type="text"  name="edited-priority" value="${task.taskPriority}"  required>
           
       
           <div class="clearfix">

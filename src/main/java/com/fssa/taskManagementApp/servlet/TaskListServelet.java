@@ -29,7 +29,7 @@ public class TaskListServelet extends HttpServlet {
 			
 			HttpSession session = request.getSession();
 			String user_email = (String) session.getAttribute("LoginUserEmail");
-
+			
 		tasks = new TaskService().getAllTasks(user_email);
 			request.setAttribute("taskList", tasks);
 			RequestDispatcher getRequest = request.getRequestDispatcher("listAllTask.jsp");
