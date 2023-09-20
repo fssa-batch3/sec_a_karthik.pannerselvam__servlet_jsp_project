@@ -27,10 +27,11 @@ public class TaskListServelet extends HttpServlet {
 			throws ServletException, IOException {
 		List<Task> tasks = null;
 		try {
-			
+		 	
 			HttpSession session = request.getSession();
 			String user_email = (String) session.getAttribute("LoginUserEmail");
 			
+			request.setAttribute("user_email", user_email);
 			tasks = new TaskService().getAllTasks(user_email);
 			request.setAttribute("taskList", tasks);
 			RequestDispatcher getRequest = request.getRequestDispatcher("listAllTask.jsp");

@@ -14,6 +14,15 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
 	integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 	crossorigin="anonymous"></script>
+	<style type="text/css">
+		.navbar.bg-dark {
+        background-color: #198754 !important;
+    }
+
+    .navbar-nav .nav-link {
+        text-decoration: none;
+    }
+	</style>
 </head>
 <body>
 	<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary"
@@ -44,8 +53,14 @@
 					%>
 					<li class="nav-item"><a class="nav-link" href="#"><%=loggedInEmail%></a>
 					</li>
-					<li class="nav-item"><a class="nav-link" href="TaskListServlet">Tasks</a>
+					<li class="nav-item"><a class="nav-link"
+						href="TaskListServlet">Tasks</a>
+						</li>
+						
+					<li class="nav-item">
+						<a class="nav-link" href="AddTask">Create Task</a>
 					</li>
+
 					<li class="nav-item"><a class="nav-link" href="LogoutServlet">Logout</a>
 
 					</li>

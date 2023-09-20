@@ -45,18 +45,7 @@ input[type="email"], input[type="password"] {
 	border-radius: 5px;
 }
 
-button[type="submit"] {
-	background-color: #007bff;
-	color: #fff;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-}
 
-button[type="submit"]:hover {
-	background-color: #0056b3;
-}
 </style>
 
 </head>
@@ -80,7 +69,7 @@ button[type="submit"]:hover {
 			<label>Email:</label> <input type="email" name="email"
 				placeholder="Enter email" required autofocus><br> <label>Password:</label>
 			<input type="password" name="password" placeholder="Enter password" required><br>
-			<button type="submit">Submit</button>
+			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
 	</div>
 </body>

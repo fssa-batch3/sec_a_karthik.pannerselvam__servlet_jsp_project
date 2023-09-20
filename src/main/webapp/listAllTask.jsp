@@ -76,16 +76,26 @@ a:hover {
 			<th>Task Description</th>
 			<th>Task Status</th>
 			<th>Priority</th>
+			<th>Assigned To</th>
+			<th>Created By</th>
 			<th>Actions</th>
 		</tr>
 		<c:forEach var="task" items="${taskList}" varStatus="loop">
 			<tr>
+
+			
 				<td><c:out value="${loop.index + 1}" /></td>
 				<td><c:out value="${task.taskName}" /></td>
 				<td><c:out value="${task.taskDesc}" /></td>
 				<td><c:out value="${task.taskStatus}" /></td>
 				<td><c:out value="${task.taskPriority}" /></td>
-				<td><a href="EditTaskServlet?taskId=${task.id}" class="btn btn-primary" type="button">Edit Task</a><br></td>
+				<td><c:out value="${task.assignee}" /></td>
+				<td><c:out value="${task.userEmail }" /></td>
+
+				<td><c:if test="${task.userEmail.trim().equals(requestScope.user_email.trim())}">
+						<a href="EditTaskServlet?taskId=${task.id}"
+							class="btn btn-primary" type="button">Edit Task</a>
+					</c:if></td>
 
 			</tr>
 		</c:forEach>

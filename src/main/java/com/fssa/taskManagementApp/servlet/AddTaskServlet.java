@@ -20,7 +20,7 @@ public class AddTaskServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/add_task_form.jsp").forward(request, response);
+        request.getRequestDispatcher("/addTask.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)

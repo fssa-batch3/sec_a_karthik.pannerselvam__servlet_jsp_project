@@ -3,73 +3,85 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Add Task page</title>
+ <jsp:include page="header.jsp"></jsp:include>
 <style>
+  /* Define your CSS classes here */
+  .container {
+    width: 100%;
+    max-width: 600px;
+    margin: 100px auto;
+  }
 
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
+  .form-group {
+    margin-bottom: 20px;
+  }
 
-input[type=submit] {
-  width: 100%;
-  background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
+  .form-group label {
+    display: block;
+    font-weight: bold;
+  }
 
-input[type=submit]:hover {
-  background-color: #45a049;
-}
+  .form-group input[type="text"],
+  .form-group select,
+  .form-group input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
+  .form-group input[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .form-group input[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+  .container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
 </style>
 </head>
 <body>
-	<!--<jsp:include page="header.jsp"></jsp:include> -->
+<div class="container">
+  <h3>Add Your Task</h3>
 
-<h3>Add Your Task</h3>
-
-<div>
- <form action="AddTask" method="POST">
+  <form class="form-group" action="AddTask" method="POST">
     <label for="fname">Task Name</label>
-    <input type="text" id="fname" name="taskName" placeholder=" Enter your task name.." autofocus required>
+    <input type="text" id="fname" name="taskName" placeholder="Enter your task name.." autofocus required>
 
     <label for="lname">Task Description</label>
-    <input type="text" id="lname" name="taskDesc"  placeholder="Enter your task decscription" required>
+    <input type="text" id="lname" name="taskDesc" placeholder="Enter your task description" required>
 
     <label for="TaskStatus">Task Status</label>
     <select id="TaskStatuses" name="taskStatuses" required>
       <option value="COMPLETED">COMPLETED</option>
       <option value="PENDING">PENDING</option>
     </select>
-    
-    
-  <label for="TaskPriority">Task Status</label>
+
+    <label for="TaskPriority">Task Priority</label>
     <select id="TaskPriority" name="Taskpriority">
       <option value="High">High</option>
       <option value="Medium">Medium</option>
       <option value="Low">Low</option>
     </select>
-    
+
     <label for="taskassign">Assign task to:</label>
     <input type="email" id="email" name="assigned_email" placeholder="Enter the existing assignee email">
-    
+
     <input type="submit" value="Submit">
   </form>
 </div>
-
 </body>
 </html>

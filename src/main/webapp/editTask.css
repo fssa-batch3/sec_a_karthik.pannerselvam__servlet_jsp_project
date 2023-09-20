@@ -10,18 +10,19 @@ body {
 /* Add padding to container elements */
 .container1 {
     padding: 20px;
-      width:500px;
+    width: 500px;
+    height: 500px; /* Increase the height here */
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-      border:1px solid #ccc;
-      border-radius:10px;
-      background:white;
-  -webkit-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
-  -moz-box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
-  box-shadow: 2px 1px 21px -9px rgba(0,0,0,0.38);
-  }
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background: white;
+    -webkit-box-shadow: 2px 1px 21px -9px rgba(0, 0, 0, 0.38);
+    -moz-box-shadow: 2px 1px 21px -9px rgba(0, 0, 0, 0.38);
+    box-shadow: 2px 1px 21px -9px rgba(0, 0, 0, 0.38);
+}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
@@ -34,7 +35,7 @@ input[type=text], input[type=password] {
 	font-family: Montserrat,Arial, Helvetica, sans-serif;
 }
 select {
-  width: 18%;
+	width: 100%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -56,12 +57,10 @@ input[type=text]:focus, input[type=password]:focus, input[type=phone]:focus, sel
   background-color: #ddd;
   outline: none;
 }
-
-
-
-/* Set a style for all buttons */
+	
+/* Set a style forrgb(128, 128, 0)128, 64)ttons */
 button {
-  background-color: #0eb7f4;
+  background-color: green;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;

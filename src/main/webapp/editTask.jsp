@@ -12,20 +12,32 @@
     <title>Edit your Task</title>
 </head>
 <body>
-    <form action ="ViewTaskServlet?taskId=${task.id}" Method="post" >
+    <form action ="EditTaskServlet?taskId=${task.id}" method="post" >
         <div class="container1">
-      
-              <label for="email"><b>Task Name</b></label>
+      <!--  	<label for="taskid"><b>Task Id</b></label>
+      	<input type="number" value="${task.id}" name="taskId" disabled>   -->          
+      	
+      	 <label for="email"><b>Task Name</b></label>
             <input type="text" name="edited-taskName" value="${task.taskName}" required>
             
           <label for="psw"><b>Task Description</b></label>
           <input type="text"  name="edited-desc" value="${task.taskDesc}" required>
           
-          <label for="status"><b>Task Status</b></label>
-          <input type="text"  name="edited-status" value="${task.taskStatus}"  required>
-           <label for="status"><b>Task Status</b></label>
-          <input type="text"  name="edited-priority" value="${task.taskPriority}"  required>
           
+           <label for="priority"><b>Task Priority</b></label>
+           
+           	<select name="edited-priority" required>
+           	<option value="High" ${task.taskPriority=='High'?'selected':''} >High</option>
+           	<option value="Medium" ${task.taskPriority=='Medium'?'selected':''}>Medium</option>
+          	 <option value="low" ${task.taskPriority=='Low'?'selected':''}>Low</option>
+           </select>
+           <br>
+          
+          <label for="status"><b>Task Status</b></label>
+          <select name="edited-status" required>
+          		<option value="PENDING"${task.taskStatus=='PENDING'? 'selected':'' }>PENDING</option>
+          		<option value="COMPLETED"${task.taskStatus=='COMPLETED'? 'selected':'' }>COMPLETED</option>
+          </select>
       
           <div class="clearfix">
       

@@ -20,7 +20,7 @@ import services.exception.ServiceException;
 /**
  * Servlet implementation class ViewTaskServlet
  */
-@WebServlet("/ViewTaskServlet")
+@WebServlet("/EditTaskServlet")
 public class EditTaskServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
