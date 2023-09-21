@@ -77,6 +77,8 @@ a:hover {
 			<th>Task Status</th>
 			<th>Priority</th>
 			<th>Assigned To</th>
+			<th>Start Date</th>
+			<th>End Date</th>
 			<th>Created By</th>
 			<th>Actions</th>
 		</tr>
@@ -90,6 +92,8 @@ a:hover {
 				<td><c:out value="${task.taskStatus}" /></td>
 				<td><c:out value="${task.taskPriority}" /></td>
 				<td><c:out value="${task.assignee}" /></td>
+				<td><c:out value="${task.startDate}" /></td>
+				<td><c:out value="${task.endDate}" /></td>
 				<td><c:out value="${task.userEmail }" /></td>
 
 				<td><c:if test="${task.userEmail.trim().equals(requestScope.user_email.trim())}">

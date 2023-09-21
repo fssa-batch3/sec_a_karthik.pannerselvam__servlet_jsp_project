@@ -1,3 +1,4 @@
+<% String errorMessage = (String) request.getAttribute("errorMessage"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +57,13 @@
 <body>
 <div class="container">
   <h3>Add Your Task</h3>
-
+  
+ 	<% if (errorMessage != null) { %>
+        <div style="color: red;">
+            <%= errorMessage %>
+        </div>
+    <% } %>
+    
   <form class="form-group" action="AddTask" method="POST">
     <label for="fname">Task Name</label>
     <input type="text" id="fname" name="taskName" placeholder="Enter your task name.." autofocus required>

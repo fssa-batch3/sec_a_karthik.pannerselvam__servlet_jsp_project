@@ -22,7 +22,6 @@ public class AddTaskServlet extends HttpServlet {
             throws ServletException, IOException {
         request.getRequestDispatcher("/addTask.jsp").forward(request, response);
     }
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
@@ -32,6 +31,13 @@ public class AddTaskServlet extends HttpServlet {
         String taskStatus = request.getParameter("taskStatuses");
         String taskPriority = request.getParameter("Taskpriority");
         String taskAssignee = request.getParameter("assigned_email");
+
+        // Check if the task status is "COMPLETED"
+        if ("COMPLETED".equals(taskStatus)) {
+            request.setAttribute("errorMessage", "Cannot create a new task with status 'COMPLETED'.");
+            request.getRequestDispatcher("/addTask.jsp").forward(request, response);
+            return; 
+        }
 
         // Getting session to get the user email
         HttpSession session = request.getSession();
@@ -51,4 +57,5 @@ public class AddTaskServlet extends HttpServlet {
             out.println(e.getMessage());
         }
     }
+
 }
