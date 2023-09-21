@@ -85,7 +85,7 @@ a:hover {
 		<c:forEach var="task" items="${taskList}" varStatus="loop">
 			<tr>
 
-			
+
 				<td><c:out value="${loop.index + 1}" /></td>
 				<td><c:out value="${task.taskName}" /></td>
 				<td><c:out value="${task.taskDesc}" /></td>
@@ -96,10 +96,17 @@ a:hover {
 				<td><c:out value="${task.endDate}" /></td>
 				<td><c:out value="${task.userEmail }" /></td>
 
-				<td><c:if test="${task.userEmail.trim().equals(requestScope.user_email.trim())}">
+				<td><c:if
+						test="${task.userEmail.trim().equals(requestScope.user_email.trim())}">
+						
+						<c:if
+						test="${task.taskStatus != 'COMPLETED'}">
 						<a href="EditTaskServlet?taskId=${task.id}"
 							class="btn btn-primary" type="button">Edit Task</a>
+					</c:if>
 					</c:if></td>
+
+
 
 			</tr>
 		</c:forEach>

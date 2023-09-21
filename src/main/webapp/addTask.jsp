@@ -70,6 +70,12 @@
 
     <label for="lname">Task Description</label>
     <input type="text" id="lname" name="taskDesc" placeholder="Enter your task description" required>
+    
+    <label for="sDate">Start Date</label>
+    <input type="date" id="startDate" name="startDate" placeholder="yyyy-mm-dd" required>
+    
+    <label for="eDate">End Date</label>
+    <input type="date" name = "endDate" id="endDate" placeholder="yyyy-mm-dd" required>
 
     <label for="TaskStatus">Task Status</label>
     <select id="TaskStatuses" name="taskStatuses" required>
@@ -90,5 +96,15 @@
     <input type="submit" value="Submit">
   </form>
 </div>
+
+<script>
+  // Get the current date in "yyyy-MM-dd" format
+  const currentDate = new Date().toISOString().split('T')[0];
+
+  // Set the minimum date attribute to the current date
+  document.getElementById('startDate').setAttribute('min', currentDate);
+  document.getElementById('endDate').setAttribute('min', currentDate);
+</script>
+
 </body>
 </html>

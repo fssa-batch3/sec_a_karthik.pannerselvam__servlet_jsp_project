@@ -2,6 +2,7 @@ package com.fssa.taskManagementApp.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,46 +17,51 @@ import services.exception.ServiceException;
 
 @WebServlet("/AddTask")
 public class AddTaskServlet extends HttpServlet {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.getRequestDispatcher("/addTask.jsp").forward(request, response);
-    }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        Task task = new Task();
-        String taskname = request.getParameter("taskName");
-        String taskDesc = request.getParameter("taskDesc");
-        String taskStatus = request.getParameter("taskStatuses");
-        String taskPriority = request.getParameter("Taskpriority");
-        String taskAssignee = request.getParameter("assigned_email");
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		request.getRequestDispatcher("/addTask.jsp").forward(request, response);
+	}
 
-        // Check if the task status is "COMPLETED"
-        if ("COMPLETED".equals(taskStatus)) {
-            request.setAttribute("errorMessage", "Cannot create a new task with status 'COMPLETED'.");
-            request.getRequestDispatcher("/addTask.jsp").forward(request, response);
-            return; 
-        }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		Task task = new Task();
+		String taskname = request.getParameter("taskName");
+		String taskDesc = request.getParameter("taskDesc");
+		String taskStatus = request.getParameter("taskStatuses");
+		String taskPriority = request.getParameter("Taskpriority");
+		String taskAssignee = request.getParameter("assigned_email");
+		String taskStartDate = request.getParameter("startDate");
+		String taskEndDate = request.getParameter("endDate");
 
-        // Getting session to get the user email
-        HttpSession session = request.getSession();
-        String user_email = (String) session.getAttribute("LoginUserEmail");
-        TaskService service = new TaskService();
-        task.setTaskName(taskname);
-        task.setTaskDesc(taskDesc);
-        task.setTaskStatus(taskStatus);
-        task.setTaskPriority(taskPriority);
-        task.setUserEmail(user_email);
-        task.setAssignee(taskAssignee);
-        try {
-            service.newTask(task);
-            // Redirect to a task list page after successful task creation
-            response.sendRedirect("TaskListServlet");
-        } catch (ServiceException e) {
-            out.println(e.getMessage());
-        }
-    }
+		// Check if the task status is "COMPLETED"
+		if ("COMPLETED".equals(taskStatus)) {
+			request.setAttribute("errorMessage", "Cannot create a new task with status 'COMPLETED'.");
+			request.getRequestDispatcher("/addTask.jsp").forward(request, response);
+			return;
+		}
+
+		// Getting session to get the user email
+		HttpSession session = request.getSession();
+		String user_email = (String) session.getAttribute("LoginUserEmail");
+		TaskService service = new TaskService();
+		task.setTaskName(taskname);
+		task.setTaskDesc(taskDesc);
+		task.setTaskStatus(taskStatus);
+		task.setTaskPriority(taskPriority);
+		task.setUserEmail(user_email);
+		task.setAssignee(taskAssignee);
+		task.setStartDate(LocalDate.parse(taskStartDate));
+		task.setEndDate(LocalDate.parse(taskEndDate));
+		try {
+			service.newTask(task);
+			// Redirect to a task list page after successful task creation
+			response.sendRedirect("TaskListServlet");
+		} catch (ServiceException e) {
+			out.println(e.getMessage());
+		}
+	}
 
 }
