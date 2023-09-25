@@ -67,8 +67,10 @@ input[type="email"], input[type="password"] {
 	}
 	%>
 			<label>Email:</label> <input type="email" name="email"
-				placeholder="Enter email" required autofocus><br> <label>Password:</label>
+				placeholder="Enter email" required autofocus><br>
+				 <label>Password:</label>
 			<input type="password" name="password" placeholder="Enter password" required><br>
+			<p>Don't have account <a href="register.jsp">create one</a></p>
 			<button type="submit" class="btn btn-success">Submit</button>
 		</form>
 	</div>

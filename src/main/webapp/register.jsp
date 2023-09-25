@@ -71,10 +71,12 @@ a {
 </head>
 <body>
 	<jsp:include page="header.jsp"></jsp:include>
-<form action="registerServelet" method="post">
+<form action="registerServelet" method="post" onsubmit="return validateForm();">
+
   <div class="container">
     <h1>Register</h1>     
     <p>Please fill in this form to create an account.</p>
+    
 	<%
 	String errorMessage = request.getParameter("error");
 	System.out.println(errorMessage); 
@@ -94,13 +96,29 @@ a {
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" id="psw"  required>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="valid_password" id="psw-repeat" required>
+    <label for="psw-repeat"><b>Confirm Password</b></label>
+    <input type="password" placeholder="Re-enter Password" name="valid_password" id="psw-repeat" required>
     <hr>
 
     <button type="submit" class="registerbtn">Register</button>
   </div>
 
 </form>
+
+<script>
+
+function validateForm() {
+  let password = document.getElementById("psw").value;
+  let repeatPassword = document.getElementById("psw-repeat").value;
+
+  if (password !== repeatPassword) {
+    alert("Passwords doesn't match");
+    return false; 
+  }
+
+  return true; 
+}
+</script>
+
 </body>
 </html>

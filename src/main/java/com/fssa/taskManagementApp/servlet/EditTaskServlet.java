@@ -1,7 +1,7 @@
 package com.fssa.taskManagementApp.servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,8 +14,6 @@ import javax.servlet.http.HttpSession;
 import dao.TaskDao;
 import dao.exception.DAOException;
 import model.Task;
-import services.TaskService;
-import services.exception.ServiceException;
 
 /**
  * Servlet implementation class ViewTaskServlet
@@ -44,16 +42,18 @@ public class EditTaskServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		HttpSession session = req.getSession();
-		
+
 		String taskname = req.getParameter("edited-taskName");
 		String taskDec = req.getParameter("edited-desc");
 		String taskStatus = req.getParameter("edited-status");
 		String taskPriority = req.getParameter("edited-priority");
 		int taskId = Integer.parseInt(req.getParameter("taskId"));
-		String taskEmail =(String) session.getAttribute("LoginUserEmail");
-		
+		String taskEmail = (String) session.getAttribute("LoginUserEmail");
+		String startDate = req.getParameter("startDate");
+		String endDate = req.getParameter("endDate");
+
 //		System.out.println(taskEmail);
-		
+
 		Task task = new Task();
 
 		task.setId(taskId);
@@ -62,17 +62,14 @@ public class EditTaskServlet extends HttpServlet {
 		task.setTaskStatus(taskStatus);
 		task.setTaskPriority(taskPriority);
 		task.setUserEmail(taskEmail);
+		task.setStartDate(LocalDate.parse(startDate));
+		task.setEndDate(LocalDate.parse(endDate));
 		System.out.println(task);
 		try {
 			TaskDao taskdao = new TaskDao();
 			taskdao.updateTask(task);
-			TaskService taskService = new TaskService();
-			List<Task> taskList = taskService.getAllTasks(taskEmail);
-			req.setAttribute("taskList", taskList);
-			System.out.println(taskList);
-			RequestDispatcher requestDispatcher = req.getRequestDispatcher("listAllTask.jsp");
-			requestDispatcher.forward(req, resp);
-		} catch (DAOException | ServiceException e) {
+			resp.sendRedirect("TaskListServlet");
+		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

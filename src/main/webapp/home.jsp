@@ -52,7 +52,7 @@ p {
 	margin: 0; /* Remove default margins */
 }
 
-.btn btn-success{
+.btn btn-success {
 	color: #007bff;
 	text-decoration: none;
 }
@@ -78,7 +78,19 @@ img {
 		<div class="text-container">
 			<h1 class="page-title">Effortlessly Simplify Your Daily Tasks</h1>
 			<h3>Create Your own tasks now!</h3>
-			<a href="addTask.jsp" class="btn btn-success" >Click me</a>
+			<%
+			String loggedInEmail = (String) session.getAttribute("LoginUserEmail");
+			if (loggedInEmail == null) {
+			%>
+			<a href="login.jsp" class="btn btn-success">Click me</a>
+			<%
+			} else {
+			%>
+			<a href="addTask.jsp" class="btn btn-success">Click me</a>
+			<%
+			}
+			%>
+
 		</div>
 	</div>
 

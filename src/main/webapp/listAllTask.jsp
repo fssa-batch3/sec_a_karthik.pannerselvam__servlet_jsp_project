@@ -62,6 +62,14 @@ a:hover {
 <body>
 
 	<jsp:include page="header.jsp"></jsp:include>
+	<% String loggedInEmail = (String) session.getAttribute("LoginUserEmail");
+			if (loggedInEmail == null) {
+			%>
+			<h1>Login/Register to access the page</h1>
+			<a href="login.jsp" class="btn btn-success">Login</a>
+			<a href="register.jsp" class="btn btn-success">Register</a>
+			<%
+			} else { %>
 
 	<%
 	List<Task> taskList = (List<Task>) request.getAttribute("taskList");
@@ -115,6 +123,10 @@ a:hover {
 	<%
 	}
 	%>
+	<%
+	}
+	%>
+	
 
 </body>
 </html>

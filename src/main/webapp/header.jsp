@@ -28,7 +28,7 @@
 	<nav class="navbar bg-dark navbar-expand-lg bg-body-tertiary"
 		data-bs-theme="dark">
 		<div class="container-fluid">
-			<a class="navbar-brand" href="index.jsp">Task Organizer</a>
+			<a class="navbar-brand" href="home.jsp">Task Organizer</a>
 			<button class="navbar-toggler" type="button"
 				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
 				aria-controls="navbarSupportedContent" aria-expanded="false"

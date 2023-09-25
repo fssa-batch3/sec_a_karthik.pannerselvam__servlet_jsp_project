@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDAO;
 import model.Task;
+import model.User;
 import services.TaskService;
+import services.UserService;
 import services.exception.ServiceException;
 
 @WebServlet("/AddTask")
@@ -42,7 +45,24 @@ public class AddTaskServlet extends HttpServlet {
 			request.getRequestDispatcher("/addTask.jsp").forward(request, response);
 			return;
 		}
-
+		  
+	    UserService userService = new UserService();
+	    User assignee = null;
+		try {
+			assignee = userService.getUserByEmail(taskAssignee);
+			System.out.println(assignee.getEmail());
+		} catch (ServiceException e) {
+			e.printStackTrace();
+		}
+	    
+	    if (assignee.getEmail()==null||assignee.getEmail().isEmpty()) {
+	    	System.out.println("inside if");
+	        request.setAttribute("errorMessage", "Assignee email does not exist.");
+	        request.getRequestDispatcher("/addTask.jsp").forward(request, response);
+	        return;
+	    }
+		
+		   
 		// Getting session to get the user email
 		HttpSession session = request.getSession();
 		String user_email = (String) session.getAttribute("LoginUserEmail");
