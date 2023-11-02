@@ -17,7 +17,7 @@
 <style>
 /* styles.css */
 body {
-	font-family: Arial, sans-serif;
+	font-family: Arial, sans-ser\if;
 	background-color: grey;
 }
 

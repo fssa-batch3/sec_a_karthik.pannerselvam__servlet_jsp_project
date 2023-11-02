@@ -1,7 +1,6 @@
 package com.fssa.taskManagementApp.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,47 +12,38 @@ import model.User;
 import services.UserService;
 import services.exception.ServiceException;
 
-/**
- * Servlet implementation class RegisterServelet
- */
 @WebServlet("/registerServelet")
 public class RegisterServelet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public RegisterServelet() {
+    public RegisterServelet() {
 
-	}
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String username = request.getParameter("username");
-		String email = request.getParameter("email");
-		String password = request.getParameter("password");
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String confirmPassword = request.getParameter("valid_password");
 
-//		PrintWriter out = response.getWriter();
+        User user = new User();
+        user.setName(username);
+        user.setEmail(email);
+        user.setPassword(password);
 
-		User user = new User();
-		user.setName(username);
-		user.setEmail(email);
-		user.setPassword(password);
-
-		UserService addUser = new UserService();
-		try {
-			if (addUser.registerUser(user)) {
-				response.sendRedirect("login.jsp");
-			}
-		} catch (ServiceException e) {
-			response.sendRedirect("register.jsp?error=" + e.getMessage());
-		}
-
-	}
-
+        UserService addUser = new UserService();
+        try {
+            if (addUser.registerUser(user)) {
+                response.sendRedirect("login.jsp");
+            }
+        } catch (ServiceException e) {
+            // Store values in request attributes for retaining in the form
+            request.setAttribute("email", email);
+            request.setAttribute("username", username);
+            request.setAttribute("password", password);
+            request.setAttribute("confirmPassword", confirmPassword);
+            request.getRequestDispatcher("register.jsp?error=" + e.getMessage()).forward(request, response);
+        }
+    }
 }

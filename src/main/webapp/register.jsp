@@ -87,17 +87,18 @@ a {
 	}
 	%>
 	
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email"  autofocus required>
-	
-	<label for="username"><b>Name</b></label>
-    <input type="text" placeholder="name" name="username" id="email"  required>
-    
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="password" id="psw"  required>
+ <label for="email"><b>Email</b></label>
+<input type="text" placeholder="Enter Email" name="email" id="email" value="<%= (request.getParameter("email") != null) ? request.getParameter("email") : "" %>" autofocus required>
 
-    <label for="psw-repeat"><b>Confirm Password</b></label>
-    <input type="password" placeholder="Re-enter Password" name="valid_password" id="psw-repeat" required>
+<label for="username"><b>Name</b></label>
+<input type="text" placeholder="Name" name="username" id="username" value="<%= (request.getParameter("username") != null) ? request.getParameter("username") : "" %>" required>
+
+<label for="psw"><b>Password</b></label>
+<input type="password" placeholder="Enter Password" name="password" id="psw" value="<%= (request.getAttribute("password") != null) ? request.getAttribute("password") : "" %>" required>
+
+<label for="psw-repeat"><b>Confirm Password</b></label>
+<input type="password" placeholder="Re-enter Password" name="valid_password" id="psw-repeat" value="<%= (request.getAttribute("confirmPassword") != null) ? request.getAttribute("confirmPassword") : "" %>" required>
+
     <hr>
 
     <button type="submit" class="registerbtn">Register</button>

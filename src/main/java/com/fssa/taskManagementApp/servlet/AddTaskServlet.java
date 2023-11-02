@@ -29,6 +29,8 @@ public class AddTaskServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		
 		PrintWriter out = response.getWriter();
 		Task task = new Task();
 		String taskname = request.getParameter("taskName");
@@ -36,6 +38,7 @@ public class AddTaskServlet extends HttpServlet {
 		String taskStatus = request.getParameter("taskStatuses");
 		String taskPriority = request.getParameter("Taskpriority");
 		String taskAssignee = request.getParameter("assigned_email");
+		System.out.println( taskAssignee);
 		String taskStartDate = request.getParameter("startDate");
 		String taskEndDate = request.getParameter("endDate");
 
@@ -47,16 +50,19 @@ public class AddTaskServlet extends HttpServlet {
 		}
 		  
 	    UserService userService = new UserService();
-	    User assignee = null;
+	 //   User assignee = null;
+	    int assign = 0;
 		try {
-			assignee = userService.getUserByEmail(taskAssignee);
-			System.out.println(assignee.getEmail());
+	//		assignee = userService.getUserByEmail(taskAssignee);
+	//		System.out.println(assignee.getEmail());
+			assign = userService.getUserCountByEmail1(taskAssignee);
+			System.out.println(assign);
+		
 		} catch (ServiceException e) {
 			e.printStackTrace();
 		}
-	    
-	    if (assignee.getEmail()==null||assignee.getEmail().isEmpty()) {
-	    	System.out.println("inside if");
+	    System.out.println(assign);
+	    if (assign == 0) {
 	        request.setAttribute("errorMessage", "Assignee email does not exist.");
 	        request.getRequestDispatcher("/addTask.jsp").forward(request, response);
 	        return;
@@ -64,7 +70,7 @@ public class AddTaskServlet extends HttpServlet {
 		
 		   
 		// Getting session to get the user email
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		String user_email = (String) session.getAttribute("LoginUserEmail");
 		TaskService service = new TaskService();
 		task.setTaskName(taskname);
@@ -73,6 +79,9 @@ public class AddTaskServlet extends HttpServlet {
 		task.setTaskPriority(taskPriority);
 		task.setUserEmail(user_email);
 		task.setAssignee(taskAssignee);
+		
+		
+		
 		task.setStartDate(LocalDate.parse(taskStartDate));
 		task.setEndDate(LocalDate.parse(taskEndDate));
 		try {

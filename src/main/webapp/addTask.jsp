@@ -96,8 +96,8 @@ String errorMessage = (String) request.getAttribute("errorMessage");
 				id="endDate" placeholder="yyyy-mm-dd" required> 
 			<label for="TaskStatus">Task Status</label> 
 				<select id="TaskStatuses" name="taskStatuses" required>
-					<option value="COMPLETED">COMPLETED</option>
 					<option value="PENDING">PENDING</option>
+					<option value="COMPLETED">COMPLETED</option>
 				</select>
 			 <label for="TaskPriority">Task Priority</label> 
 			 	<select id="TaskPriority" name="Taskpriority">

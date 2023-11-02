@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.TaskDao;
+import dao.TaskDAO;
 import dao.exception.DAOException;
 import model.Task;
 
@@ -26,7 +26,7 @@ public class EditTaskServlet extends HttpServlet {
 			throws ServletException, IOException {
 		int taskId = Integer.parseInt(request.getParameter("taskId"));
 
-		TaskDao taskDao = new TaskDao();
+		TaskDAO taskDao = new TaskDAO();
 		Task task = null;
 		try {
 			task = taskDao.getTaskById(taskId);
@@ -66,7 +66,7 @@ public class EditTaskServlet extends HttpServlet {
 		task.setEndDate(LocalDate.parse(endDate));
 		System.out.println(task);
 		try {
-			TaskDao taskdao = new TaskDao();
+			TaskDAO taskdao = new TaskDAO();
 			taskdao.updateTask(task);
 			resp.sendRedirect("TaskListServlet");
 		} catch (DAOException e) {
